@@ -31,4 +31,4 @@ If time permits I would like to add a favorites page where users can add their f
 * What project management tool will you use? Github Projects
 * How often will you commit your code? I will attempt to commit everyday until completed
 * How will you test your web site? I will run and inspect it in google chrome.
-* How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper? I used the wire framing too figma
+* How will you design the layout of your website? Will you use a wireframing tool? Will you draw it on paper? I used the wire framing tool figma
