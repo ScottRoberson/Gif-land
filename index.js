@@ -11,13 +11,13 @@ const results = document.querySelector('.results');
 //140 x 140
 
 
-const gifs = [];
+// const gifs = [];
 
-fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${APIKey}&limit=25&rating=G`)
-  .then(res => res.json())
-    .then(data => gifs.push(...data.data));
+// fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${APIKey}&limit=25&rating=G`)
+//   .then(res => res.json())
+//     .then(data => gifs.push(...data.data));
 
-    console.log(gifs);
+//     console.log(gifs);
 
 
     
