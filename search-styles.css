@@ -1,0 +1,28 @@
+
+.main-search{
+  /* border:1px solid red; */
+  width:1000px;
+  height:100vh;
+  padding:30px;
+  margin:0 auto;
+
+}
+.trending{
+  /* border:1px solid blue; */
+  padding:20px;
+  height:200px;
+
+}
+
+.trending-heading{
+  margin-bottom:10px;
+}
+
+
+
+.trending-gifs{
+  height:140px;
+  width:140px;
+  margin:5px;
+  padding-left:10px;
+}
