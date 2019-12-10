@@ -4,9 +4,9 @@ const form = document.getElementById('search-form');
 
 
 const trendAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKey}&limit=5&rating=G`;
-//const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput.value}&limit=25&offset=0&rating=G&lang=en`;
 
-const searchHard = `https://api.giphy.com/v1/gifs/search?api_key=KNCtKIAZrRgh6wtrppvYzj6sttmmEZL9&q=three stooges&limit=25&offset=0&rating=G&lang=en`
+
+
 
 //   async function getTrendingGifs(){
 //     const response = await fetch(trendAPI);
@@ -37,8 +37,9 @@ form.addEventListener('submit',getSearchGifs);
 
 function getSearchGifs(e){
 const searchInput = document.querySelector('#search-input').value;
+const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=25&offset=0&rating=G&lang=en`
 
-fetch(`https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=25&offset=0&rating=G&lang=en`)
+fetch(searchAPI)
 .then(res => res.json())
 .then(resp_data =>{
   let gifArray = resp_data.data;
