@@ -73,6 +73,12 @@
 }
 
 
+.waiting-loader{
+  visibility: visible;
+  display:flex;
+  justify-content:center;
+  width:100%;
+}
 
 .results{
   height:100%;
@@ -91,4 +97,8 @@
   width:200px;
   margin:10px;
   border:1px solid #a6a6a6;
+}
+
+.waiting{
+  align-self: center;
 }
