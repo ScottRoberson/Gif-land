@@ -73,12 +73,11 @@
 }
 
 
-.waiting-loader{
-  visibility: visible;
+/* .waiting-loader{
   display:flex;
   justify-content:center;
   width:100%;
-}
+} */
 
 .results{
   height:100%;
@@ -99,6 +98,12 @@
   border:1px solid #a6a6a6;
 }
 
-.waiting{
-  align-self: center;
+#load-img{
+  display:none;
+
+}
+
+ #load-img.show{
+  display:block;
+  margin: 0 auto;
 }

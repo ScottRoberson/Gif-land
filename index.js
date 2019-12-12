@@ -1,7 +1,8 @@
 const APIKey = config.API_Key;
 const results = document.querySelector('.results');
 const form = document.getElementById('search-form');
-let searchInputClr = document.querySelector('#search-input').value;
+const loadingImg = document.getElementById('load-img');
+
 
   
 
@@ -36,12 +37,16 @@ const searchInput = document.querySelector('#search-input').value;
 const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=50&offset=0&rating=G&lang=en`
 
 
-
+showLoader();
 fetch(searchAPI)
 .then(res => res.json())
 .then(resp_data =>{
+  //hideLoader();
+  
   let gifArray = resp_data.data;
-  showGifs(gifArray,searchInput);
+
+  
+  showGifs(gifArray);
 });
 
 
@@ -68,13 +73,21 @@ function clearFields(){
 }
   
 
-document.querySelector('.waiting-loader').addEventListener('click',function(e){
-  const loaderImg = document.getElementById('waiting');
-  const loaderParent = document.getElementById('load-parent');
-  const results = document.querySelector('.results');
-  loaderParent.removeChild(loaderImg);
-  results.removeChild(loaderParent);
-})
+function showLoader(){
+  loadingImg.classList.add('show');
+  setTimeout(() =>{
+  loadingImg.classList.remove('show');
+
+  },2000);
+}
+
+// function hideLoader(){
+
+// }
+
+
+
+
 
 
 
