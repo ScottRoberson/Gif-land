@@ -1,5 +1,4 @@
 const APIKey = config.API_Key;
-const results = document.querySelector('.results');
 const form = document.getElementById('search-form');
 const loadingImg = document.getElementById('load-img');
 
@@ -28,7 +27,18 @@ const trendAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKey}&limit
     getTrendingGifs();
 
 
+//showLoader();
+const showLoader = () =>{
+  loadingImg.classList.add('show');
 
+}
+
+const hideLoader = ()=>{
+  loadingImg.classList.remove('show');
+
+}
+
+showLoader();
 
 form.addEventListener('submit',getSearchGifs);
 
@@ -37,11 +47,10 @@ const searchInput = document.querySelector('#search-input').value;
 const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=50&offset=0&rating=G&lang=en`
 
 
-showLoader();
 fetch(searchAPI)
 .then(res => res.json())
 .then(resp_data =>{
-  //hideLoader();
+  
   
   let gifArray = resp_data.data;
 
@@ -55,35 +64,36 @@ e.preventDefault();
 }
 
 function showGifs(gifArray){
+  
+
   gifArray.forEach(gif =>{
-    const results = document.querySelector('.results');
+    const searchResults = document.querySelector('.results');
        const image = document.createElement('img');
-      image.classList.add('result-gifs');
+      image.className= 'result-gifs';
        image.src=gif.images.downsized_medium.url;
-       results.appendChild(image);
-       
+       searchResults.appendChild(image);
+
   })
+
+  
+
+  hideLoader();
+  
+     
   clearFields();
 }
 
 function clearFields(){
-  
-  
   document.getElementById('search-input').value = '';
 }
   
 
-function showLoader(){
-  loadingImg.classList.add('show');
-  setTimeout(() =>{
-  loadingImg.classList.remove('show');
 
-  },2000);
-}
 
-// function hideLoader(){
 
-// }
+
+
+ 
 
 
 
