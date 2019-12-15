@@ -44,7 +44,7 @@ form.addEventListener('submit',getSearchGifs);
 
 function getSearchGifs(e){
 const searchInput = document.querySelector('#search-input').value;
-const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=50&offset=0&rating=G&lang=en`
+const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=100&offset=0&rating=G&lang=en`
 
 
 fetch(searchAPI)
