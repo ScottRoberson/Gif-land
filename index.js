@@ -1,6 +1,7 @@
 const APIKey = config.API_Key;
 const form = document.getElementById('search-form');
 const loadingImg = document.getElementById('load-img');
+const searchResults = document.querySelector('.results');
 
 
   
@@ -11,12 +12,12 @@ const trendAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKey}&limit
 
 
 
-  async function getTrendingGifs(){
+   const getTrendingGifs = async ()=> {
     const response = await fetch(trendAPI);
     const json = await response.json();
     
      json.data.forEach(trendGif => {
-       const section = document.querySelector('.trending');
+       const section = document.querySelector('.trending-wrapper');
        const image = document.createElement('img');
        image.classList.add('trending-gifs');
        image.src=trendGif.images.downsized_medium.url;
@@ -27,7 +28,7 @@ const trendAPI = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKey}&limit
     getTrendingGifs();
 
 
-//showLoader();
+
 const showLoader = () =>{
   loadingImg.classList.add('show');
 
@@ -40,11 +41,16 @@ const hideLoader = ()=>{
 
 showLoader();
 
+const hidePrev = () => {
+  searchResults.innerHTML='';
+}
+
 form.addEventListener('submit',getSearchGifs);
 
-function getSearchGifs(e){
+const getSearchGifs = (e)=>{
+hidePrev();
 const searchInput = document.querySelector('#search-input').value;
-const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=100&offset=0&rating=G&lang=en`
+const searchAPI = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&q=${searchInput}&limit=50&offset=0&rating=G&lang=en`
 
 
 fetch(searchAPI)
@@ -53,17 +59,19 @@ fetch(searchAPI)
   
   
   let gifArray = resp_data.data;
-
   
+
   showGifs(gifArray);
 });
 
+
+  clearFields();
 
 e.preventDefault();
 
 }
 
-function showGifs(gifArray){
+const showGifs = (gifArray) =>{
   
 
   gifArray.forEach(gif =>{
@@ -72,18 +80,15 @@ function showGifs(gifArray){
       image.className= 'result-gifs';
        image.src=gif.images.downsized_medium.url;
        searchResults.appendChild(image);
+  
 
   })
 
-  
-
-  hideLoader();
-  
      
   clearFields();
 }
 
-function clearFields(){
+const clearFields=()=>{
   document.getElementById('search-input').value = '';
 }
   
